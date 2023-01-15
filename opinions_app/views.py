@@ -40,6 +40,6 @@ def add_opinion_view():
 
 @app.route('/opinions/<int:id>')
 def opinion_view(id):
-    """Функция добавления ссылок"""
+    """Функция добавления ссыло"""
     opinion = Opinion.query.get_or_404(id)
     return render_template('opinion.html', opinion=opinion)
