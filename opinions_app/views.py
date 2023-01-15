@@ -9,6 +9,7 @@ from .models import Opinion
 
 @app.route('/')
 def index_view():
+    """Вывод главной страницы"""
     quantity = Opinion.query.count()
     if not quantity:
         abort(404)
@@ -19,6 +20,7 @@ def index_view():
 
 @app.route('/add', methods=['GET', 'POST'])
 def add_opinion_view():
+    """Страница добавления мнения"""
     form = OpinionForm()
     if form.validate_on_submit():
         text = form.text.data
@@ -38,5 +40,6 @@ def add_opinion_view():
 
 @app.route('/opinions/<int:id>')
 def opinion_view(id):
+    """Функция добавления ссылок"""
     opinion = Opinion.query.get_or_404(id)
     return render_template('opinion.html', opinion=opinion)
